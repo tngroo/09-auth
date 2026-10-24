@@ -10,7 +10,7 @@ const AuthNavigation = () => {
     const handleClick = async()=> { 
         await logout()
         clearIsAuthenticated()
-        router.replace('/login')
+        router.replace('/sign-in')
      }
     return isAuthenticated? (
     <>
