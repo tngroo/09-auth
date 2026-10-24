@@ -24,7 +24,7 @@ const Authentification = () => {
           setUser(user)
           router.push('/profile')
         } catch (error) {
-          setError('Registration failed')
+          setError('Sign-in failed')
         }
       }
   return (
