@@ -1,7 +1,7 @@
 
 import {create} from 'zustand'
-import { CreateNoteParams } from '../api';
 import { persist } from 'zustand/middleware';
+import { CreateNoteParams } from '../api/clientApi';
 
 
 const initialDraft : CreateNoteParams = {

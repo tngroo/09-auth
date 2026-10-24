@@ -2,11 +2,11 @@
 'use client'
 import * as Yup from 'yup';
 import css from './NoteForm.module.css'
-import { createNote, CreateNoteParams } from "@/lib/api";
 import { useRouter } from 'next/navigation';
 import { useNoteDraft } from '@/lib/store/noteStore';
 import { ChangeEvent } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createNote, CreateNoteParams } from '@/lib/api/clientApi';
 
 
 const validation = Yup.object({
