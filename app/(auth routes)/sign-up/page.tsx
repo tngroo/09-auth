@@ -5,10 +5,12 @@ import { useState } from 'react'
 import { getMe, register } from '@/lib/api/clientApi'
 import { useAuthStore } from '@/lib/store/authStore'
 const registration = () => {
+  
   const router = useRouter()
   const [error, setError] = useState('')
   const setUser = useAuthStore((state)=> state.setUser)
   const handleSubmit = async (formData:FormData) =>{
+    setError('')
     const values = {
       email: String(formData.get('email') ?? ''),
       password: String(formData.get('password') ?? '')
@@ -43,7 +45,7 @@ const registration = () => {
       </button>
     </div>
 
-    <p className={css.error}>Error</p>
+   {error && <p className={css.error}>{error}</p>}
   </form>
 </main>
 

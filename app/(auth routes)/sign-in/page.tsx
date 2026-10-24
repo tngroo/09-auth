@@ -14,6 +14,7 @@ const Authentification = () => {
       const user = useAuthStore((state)=>state.user)
       
       const handleSubmit = async (formData:FormData) =>{
+        setError('')
         const values = {
           email: String(formData.get('email') ?? ''),
           password: String(formData.get('password') ?? '')
