@@ -51,10 +51,10 @@ export async function checkSession () {
   return response;
 }
 export async function getMe  () {
-  const  response  = await api.get<User>(`/users/me`, {
+  const  {data}  = await api.get<User>(`/users/me`, {
     headers: await authHeaders()
   });
-  return response;
+  return data
 }
 
 

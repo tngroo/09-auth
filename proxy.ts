@@ -63,6 +63,6 @@ if (isPublicRoute && accessToken) {
 // попередній код без змін...  
 
 export const config = {
-  matcher: ["/profile", "/notes", "/sign-in", "/sign-up"],
+  matcher: ["/profile/:path*", "/notes/:path*", "/sign-in", "/sign-up"],
 };
 

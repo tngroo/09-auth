@@ -2,6 +2,7 @@ import Link from 'next/link'
 import css from './ProfilePage.module.css'
 import { getMe } from '@/lib/api/serverApi'
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata ={
   title: 'Profile',
@@ -34,9 +35,9 @@ const Profile = async() => {
 	     </Link>
 	   </div>
      <div className={css.avatarWrapper}>
-      <img
-        src={user.data.avatar}
-        alt={user.data.avatar}
+      <Image
+        src={user.avatar}
+        alt="User Avatar"
         width={120}
         height={120}
         className={css.avatar}
@@ -44,10 +45,10 @@ const Profile = async() => {
     </div>
     <div className={css.profileInfo}>
       <p>
-        Username: {user.data.username}
+        Username: {user.username}
       </p>
       <p>
-        Email: {user.data.email}
+        Email: {user.email}
       </p>
     </div>
   </div>

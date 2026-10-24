@@ -6,8 +6,8 @@ import Pagination from "@/components/Pagination/Pagination";
 import { useDebouncedCallback } from "use-debounce";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import css from '../../[id]/Notes.client.module.css'
-import {useRouter} from "next/navigation";
 import { fetchNotes } from "@/lib/api/clientApi";
+import Link from "next/link";
 
 type NotesClientProps = {
   tag?: string
@@ -15,7 +15,6 @@ type NotesClientProps = {
 
 export default function App({tag} :NotesClientProps){
 
-  const router = useRouter();
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -43,12 +42,11 @@ export default function App({tag} :NotesClientProps){
         }}
       />
 
-      <button
+      <Link href='/notes/action/create'
         className={css.button}
-        onClick={() => router.push('/notes/action/create')}
       >
         Create note +
-      </button>
+      </Link>
     </header>
 
     {isLoading && <p>Loading...</p>}

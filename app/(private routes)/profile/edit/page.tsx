@@ -4,13 +4,18 @@ import css from './EditProfilePage.module.css'
 import Image from 'next/image'
 import { updateMe } from '@/lib/api/clientApi'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Edit = () => {
     const router = useRouter()
     const setUser = useAuthStore((state)=> state.setUser)
     const user = useAuthStore((state)=> state.user)
     const [error, setError] = useState('')
+    const [username, setUsername]= useState(user?.username ?? '')
+
+    useEffect (()=>{
+      if (user?.username) setUsername(user.username)
+    },[user?.username])
 
     const  handleSubmit = async(formData: FormData) =>{
         const username = String(formData.get('username') ?? '')
@@ -60,6 +65,7 @@ const Edit = () => {
           Cancel
         </button>
       </div>
+      {error && <p className={css.error}>{error}</p>}
     </form>
   </div>
 </main>

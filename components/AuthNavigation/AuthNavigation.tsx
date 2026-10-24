@@ -6,12 +6,12 @@ import { logout } from '@/lib/api/clientApi'
 import { useRouter } from 'next/navigation'
 const AuthNavigation = () => {
     const router = useRouter()
+    const {isAuthenticated, user,clearIsAuthenticated } = useAuthStore()
     const handleClick = async()=> { 
         await logout()
+        clearIsAuthenticated()
         router.replace('/login')
      }
-
-    const {isAuthenticated, user} = useAuthStore()
     return isAuthenticated? (
     <>
      <li className={css.navigationItem}>
