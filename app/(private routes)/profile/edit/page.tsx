@@ -11,13 +11,8 @@ const Edit = () => {
     const setUser = useAuthStore((state)=> state.setUser)
     const user = useAuthStore((state)=> state.user)
     const [error, setError] = useState('')
-    const [username, setUsername]= useState(user?.username ?? '')
-
-    useEffect (()=>{
-      if (user?.username) setUsername(user.username)
-    },[user?.username])
-
     const  handleSubmit = async(formData: FormData) =>{
+      setError('')
         const username = String(formData.get('username') ?? '')
     
     try{
@@ -25,10 +20,10 @@ const Edit = () => {
         setUser(updateUser)
         router.push('/profile')
     } catch (error){
-        setError(`Failed save`)
+        setError(`Error: ${error}. Failed save`)
     }
 }
-    const handleCancel = () => router.push('/profile')
+    const handleCancel = () => router.back()
 
   return (
    <>
@@ -47,8 +42,9 @@ const Edit = () => {
 
     <form action={handleSubmit} className={css.profileInfo}>
       <div className={css.usernameWrapper}>
-        <label htmlFor="username">Username:{user?.username}</label>
+        <label htmlFor="username">Username</label>
         <input id="username"
+        defaultValue={user?.username}
         name='username'
           type="text"
           className={css.input}
